@@ -1,0 +1,54 @@
+<UserControl x:Class="MyControls.RadioButtonSlection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyControls"
+             xmlns:converter="clr-namespace:Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Name="Root">
+    <UserControl.Resources>
+        <!--コントロールの可視・不可視をintによって切り替えるためのコンバータ-->
+        <converter:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+
+        <!--各RadioButtonに対応するOptionを返すコンバータ。対応のOptionがない場合は空文字を返す-->
+        <converter:OptionsUsabilityConverter x:Key="OptionsUsabilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--このUserControlが持っているプロパティを参照するため、ElementNameにこのUserControlの名前を指定すること-->
+        <RadioButton Grid.Row="0" Name="Button0" Checked="Button0_Checked" Visibility="{Binding SelectionCount, ElementName=Root, Converter={StaticResource IntToVisibilityConverter}, ConverterParameter=0}">
+            <TextBlock Text="{Binding Options, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=0}"/>
+        </RadioButton>
+        <TextBlock Grid.Row="1" Text="{Binding OptionDescriptions, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=0}"/>
+        <RadioButton Grid.Row="2" Name="Button1" Checked="Button1_Checked" Visibility="{Binding SelectionCount, ElementName=Root, Converter={StaticResource IntToVisibilityConverter}, ConverterParameter=1}">
+            <TextBlock Text="{Binding Options, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=1}"/>
+        </RadioButton>
+        <TextBlock Grid.Row="3" Text="{Binding OptionDescriptions, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=1}"/>
+        <RadioButton Grid.Row="4" Name="Button2" Checked="Button2_Checked" Visibility="{Binding SelectionCount, ElementName=Root, Converter={StaticResource IntToVisibilityConverter}, ConverterParameter=2}">
+            <TextBlock Text="{Binding Options, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=2}"/>
+        </RadioButton>
+        <TextBlock Grid.Row="5" Text="{Binding OptionDescriptions, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=2}"/>
+        <RadioButton Grid.Row="6" Name="Button3" Checked="Button3_Checked" Visibility="{Binding SelectionCount, ElementName=Root, Converter={StaticResource IntToVisibilityConverter}, ConverterParameter=3}">
+            <TextBlock Text="{Binding Options, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=3}"/>
+        </RadioButton>
+        <TextBlock Grid.Row="7" Text="{Binding OptionDescriptions, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=3}"/>
+        <RadioButton Grid.Row="8" Name="Button4" Checked="Button4_Checked" Visibility="{Binding SelectionCount, ElementName=Root, Converter={StaticResource IntToVisibilityConverter}, ConverterParameter=4}">
+            <TextBlock Text="{Binding Options, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=4}"/>
+        </RadioButton>
+        <TextBlock Grid.Row="9" Text="{Binding OptionDescriptions, ElementName=Root, Converter={StaticResource OptionsUsabilityConverter}, ConverterParameter=4}"/>
+    </Grid>
+</UserControl>
